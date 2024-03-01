@@ -3,6 +3,8 @@ import SwiftUI
 public
 struct VLCheckRoundToggleStyle: ToggleStyle
 {
+ @Environment(\.isEnabled) private var isEnabled
+
  public
  func makeBody(configuration: Configuration) -> some View
  {
@@ -12,6 +14,7 @@ struct VLCheckRoundToggleStyle: ToggleStyle
    HStack
    {
     configuration.label
+     .foregroundStyle(isEnabled ? .primary : .secondary)
      .frame(maxWidth: .infinity, alignment: .leading)
 
     Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
